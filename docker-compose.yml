@@ -5,4 +5,4 @@ services:
     volumes:
       - ~/mvc-data:/mvc/data  # Mount the host directory to the container
       - ./mvc.conf:/root/.mvc/mvc.conf  # Mount the mvc.conf file to the container
-    command: mvcd -datadir=/mvc/data
+    command: mvcd -conf=/root/.mvc/mvc.conf -datadir=/mvc/data
