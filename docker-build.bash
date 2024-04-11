@@ -9,8 +9,6 @@ BASE_URL="https://github.com/mvc-labs/mvc-mining-instruction/releases/download/"
 
 # Construct the download URL
 DOWNLOAD_URL="${BASE_URL}/${VERSION}/mvc.tar.gz"
-# default configuration file
-DOWNLOAD_CONF_URL="${BASE_URL}/${VERSION}/mvc.conf"
 
 # Directory to store the downloaded binaries
 BIN_DIR="bin"
@@ -22,20 +20,22 @@ mkdir -p ${BIN_DIR}
 
 # Download the binaries into the bin directory
 echo "Downloading MVC node software version ${VERSION} from ${DOWNLOAD_URL} ..."
-curl -L ${DOWNLOAD_URL} -o mvc.tar.gz
+curl -L "${DOWNLOAD_URL}" -o mvc.tar.gz
 
-# Extracting the tarball if needed, assuming the binaries are tarballed
+# Extracting the tarball if needed, assuming the binaries are tar
 tar -xzf mvc.tar.gz
 
-echo "Downloading MVC configuration file ${VERSION} from ${DOWNLOAD_CONF_URL} ..."
+echo "Copying MVC configuration file mvc.conf to ${BIN_DIR} ..."
 
-curl -L ${DOWNLOAD_CONF_URL} -o bin/mvc.conf
+cp mvc.conf ${BIN_DIR}
 
 rm mvc.tar.gz
 
 echo "Download complete. Building Docker image..."
 
 # Assuming there's a Dockerfile in the current directory
-docker build --platform linux/x86_64 -t microvisionchain:${VERSION} .
+docker build --platform linux/x86_64 -t microvisionchain:"${VERSION}" .
 
 echo "Docker image built successfully."
+
+rm -rf bin
