@@ -15,13 +15,13 @@ Documentation:
 bash docker-build.sh
 ```
 
-## Run Docker Image
+## Run Docker Image with mvcd(default)
 
 ```bash
 docker run microvisionchain:v0.2.0.0
 ```
 
-## Run Docker Image by with mvc-cli
+## Run Docker Image with mvc-cli
 
 ```bash
 docker run microvisionchain:v0.2.0.0 mvc-cli help
