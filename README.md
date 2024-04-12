@@ -8,6 +8,16 @@ Documentation:
 
 [构建文档](https://docs.mvclabs.io/zh-CN/docs/nodes/installation/docker-build)
 
+## Quick Start
+
+Copy and paste the following commands to your terminal to set up a MicroVisionChain node quickly.
+
+```bash
+mkdir -p ~/mvc-data && \
+git clone https://github.com/mvc-labs/mvc-dockerfile.git && \
+cd mvc-dockerfile && \
+docker compose up -d
+```
 
 ## Build Docker Image
 
